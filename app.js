@@ -2,8 +2,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
 dotenv.config();
+const { connectDB } = require('./utils/db-client.util.js');
+
 const app = express();
 
 // Middlewares
