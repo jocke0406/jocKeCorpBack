@@ -18,6 +18,17 @@ app.get('/', (req, res) => {
 
 // Serveur
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Serveur absurde lancé sur le port ${PORT}`);
-});
+
+async function startServer() {
+    try {
+        await connectDB();
+        app.listen(PORT, () => {
+            console.log(`🚀 Serveur absurde lancé sur le port ${PORT}`);
+        });
+    } catch (err) {
+        console.error('💥 Impossible de démarrer le serveur :', err);
+        process.exit(1);
+    }
+}
+
+startServer();
